@@ -46,35 +46,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.selectAnnotation(point2, animated: true)
         
     }
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let identifier = "RE"
-        
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView!.canShowCallout = true
-            annotationView?.pinTintColor = UIColor.green
-            annotationView?.animatesDrop = true
-            
-            let btn = UIButton(type: .detailDisclosure)
-            annotationView?.rightCalloutAccessoryView = btn
-            
-            
-            
-            let img = UIImageView(image: UIImage(named: "사진"))
-            img.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-            annotationView?.leftCalloutAccessoryView = img
-        }
-        else {
-            annotationView?.annotation = annotation
-        }
-        
-        return annotationView
-    }
+     
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let alert = UIAlertController(title: view.annotation!.title!, message: view.annotation!.subtitle!, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
         present(alert, animated: false, completion: nil)
     }
 
@@ -88,6 +65,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         points.append(point)
         return point
     }
+ 
 
     @IBAction func standard(_ sender: Any) {
         mapView.mapType = MKMapType.standard
@@ -101,6 +79,36 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func hybrid(_ sender: Any) {
         mapView.mapType = MKMapType.hybrid
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let identifier = "RE"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)as? MKPinAnnotationView
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+            annotationView?.pinTintColor = UIColor.blue
+            annotationView?.animatesDrop = true
+            
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = btn
+            
+            
+            
+            
+            let img = UIImageView(image: UIImage(named: "사진"))
+            img.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            annotationView?.leftCalloutAccessoryView = img
+            
+        }
+        else {
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
         
     }
     
