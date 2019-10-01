@@ -29,18 +29,24 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
         
 
-        let point = createPoint(la: 35.165775, lo: 129.072537, title: "학교" , subtitle: "학교")
+        //let point = createPoint(la: 35.165775, lo: 129.072537, title: "학교" , subtitle: "학교")
+        let point = PinData(la: 35.165775, lo: 129.072537, title: "학교" , subtitle: "학교")
         mapView.addAnnotation(point)
         
-        let point2 = createPoint(la: 35.164236, lo: 129.064941, title: "송상현광장" , subtitle: "공원")
+//        let point2 = createPoint(la: 35.164236, lo: 129.064941, title: "송상현광장" , subtitle: "공원")
+        let point2 = PinData(la: 35.164236, lo: 129.064941, title: "송상현광장" , subtitle: "공원")
+        
         mapView.addAnnotation(point2)
         
-        let point3 = createPoint(la: 35.167629, lo: 129.070595, title: "번개반점" , subtitle: "중국 음식점")
+//        let point3 = createPoint(la: 35.167629, lo: 129.070595, title: "번개반점" , subtitle: "중국 음식점")
+        let point3 = PinData(la: 35.167629, lo: 129.070595, title: "번개반점" , subtitle: "중국 음식점")
+        
         mapView.addAnnotation(point3)
         
-        let point4 = createPoint(la: 35.071750, lo: 129.057410, title: "영도 목장원" , subtitle: "식당")
-        mapView.addAnnotation(point4)
+//        let point4 = createPoint(la: 35.071750, lo: 129.057410, title: "영도 목장원" , subtitle: "식당")
+        let point4 = PinData(la: 35.071750, lo: 129.057410, title: "영도 목장원" , subtitle: "식당")
         
+        mapView.addAnnotation(point4)
         
         mapView.showAnnotations(points, animated: true)
         mapView.selectAnnotation(point2, animated: true)
@@ -91,7 +97,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
             annotationView!.canShowCallout = true
             annotationView?.pinTintColor = UIColor.blue
             annotationView?.animatesDrop = true
-            
+            switch annotation.title {
+                case "학교":
+                    annotationView?.pinTintColor = UIColor.red
+                case "송상현광장":
+                    annotationView?.pinTintColor = UIColor.yellow
+                case .none:
+                    break
+                case .some(_):
+                    break
+            }
             let btn = UIButton(type: .detailDisclosure)
             annotationView?.rightCalloutAccessoryView = btn
             

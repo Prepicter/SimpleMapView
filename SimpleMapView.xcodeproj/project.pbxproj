@@ -13,7 +13,7 @@
 		74576F57233095C2007FC74F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74576F56233095C2007FC74F /* Assets.xcassets */; };
 		74576F5A233095C2007FC74F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74576F58233095C2007FC74F /* LaunchScreen.storyboard */; };
 		74576F6323309608007FC74F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74576F6223309608007FC74F /* MapKit.framework */; };
-		74FBE94D2339E0070097AF2B /* 이미지.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 74FBE94C2339E0070097AF2B /* 이미지.jpeg */; };
+		74A23D1F2343125B00565285 /* PinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A23D1E2343125B00565285 /* PinData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		74576F59233095C2007FC74F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74576F5B233095C2007FC74F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74576F6223309608007FC74F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		74FBE94C2339E0070097AF2B /* 이미지.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "이미지.jpeg"; path = "../../이미지.jpeg"; sourceTree = "<group>"; };
+		74A23D1E2343125B00565285 /* PinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +60,10 @@
 		74576F4E233095BD007FC74F /* SimpleMapView */ = {
 			isa = PBXGroup;
 			children = (
+				74A23D1E2343125B00565285 /* PinData.swift */,
 				74576F4F233095BE007FC74F /* AppDelegate.swift */,
 				74576F51233095BE007FC74F /* ViewController.swift */,
 				74576F53233095BE007FC74F /* Main.storyboard */,
-				74FBE94C2339E0070097AF2B /* 이미지.jpeg */,
 				74576F56233095C2007FC74F /* Assets.xcassets */,
 				74576F58233095C2007FC74F /* LaunchScreen.storyboard */,
 				74576F5B233095C2007FC74F /* Info.plist */,
@@ -140,7 +140,6 @@
 				74576F5A233095C2007FC74F /* LaunchScreen.storyboard in Resources */,
 				74576F57233095C2007FC74F /* Assets.xcassets in Resources */,
 				74576F55233095BE007FC74F /* Main.storyboard in Resources */,
-				74FBE94D2339E0070097AF2B /* 이미지.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +152,7 @@
 			files = (
 				74576F52233095BE007FC74F /* ViewController.swift in Sources */,
 				74576F50233095BE007FC74F /* AppDelegate.swift in Sources */,
+				74A23D1F2343125B00565285 /* PinData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
