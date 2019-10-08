@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>lon</key>
+		<string>129.072537</string>
+		<key>lat</key>
+		<string>35.165775</string>
+		<key>title</key>
+		<string>동의과학대</string>
+		<key>subtitle</key>
+		<string>대학교</string>
+	</dict>
+	<dict>
+		<key>lon</key>
+		<string>129.064941</string>
+		<key>lat</key>
+		<string>35.164236</string>
+		<key>title</key>
+		<string>송상현광장</string>
+		<key>subtitle</key>
+		<string>공원</string>
+	</dict>
+	<dict>
+		<key>lon</key>
+		<string>129.070595</string>
+		<key>lat</key>
+		<string>35.167629</string>
+		<key>title</key>
+		<string>번개반점</string>
+		<key>subtitle</key>
+		<string>중국 음식점</string>
+	</dict>
+	<dict>
+		<key>lon</key>
+		<string>129.057410</string>
+		<key>lat</key>
+		<string>35.071750</string>
+		<key>title</key>
+		<string>영도 목장원</string>
+		<key>subtitle</key>
+		<string>식당</string>
+	</dict>
+</array>
+</plist>

@@ -12,7 +12,7 @@ import MapKit
 class ViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    var points = [MKPointAnnotation]()
+    var points = [MKAnnotation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,35 +21,48 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         // 중심점 잡기
         let center = CLLocationCoordinate2D(latitude: 35.165775, longitude: 129.072537)
-        // 범위 잡기
-//        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-//        let region = MKCoordinateRegion(center: center, span: span)
+//          범위 잡기
+//          let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+//          let region = MKCoordinateRegion(center: center, span: span)
         
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(region, animated: true)
         
 
-        //let point = createPoint(la: 35.165775, lo: 129.072537, title: "학교" , subtitle: "학교")
-        let point = PinData(la: 35.165775, lo: 129.072537, title: "학교" , subtitle: "학교")
-        mapView.addAnnotation(point)
+        // plist 파일 불러오기
+        let path = Bundle.main.path(forResource: "pinData", ofType: "plist")
         
-//        let point2 = createPoint(la: 35.164236, lo: 129.064941, title: "송상현광장" , subtitle: "공원")
-        let point2 = PinData(la: 35.164236, lo: 129.064941, title: "송상현광장" , subtitle: "공원")
+        let content = NSArray(contentsOfFile: path!)
+        print(content!)
         
-        mapView.addAnnotation(point2)
+        // 값을 뽑아 처리
+        var annotations = [MKPointAnnotation]()
         
-//        let point3 = createPoint(la: 35.167629, lo: 129.070595, title: "번개반점" , subtitle: "중국 음식점")
-        let point3 = PinData(la: 35.167629, lo: 129.070595, title: "번개반점" , subtitle: "중국 음식점")
-        
-        mapView.addAnnotation(point3)
-        
-//        let point4 = createPoint(la: 35.071750, lo: 129.057410, title: "영도 목장원" , subtitle: "식당")
-        let point4 = PinData(la: 35.071750, lo: 129.057410, title: "영도 목장원" , subtitle: "식당")
-        
-        mapView.addAnnotation(point4)
-        
-        mapView.showAnnotations(points, animated: true)
-        mapView.selectAnnotation(point2, animated: true)
+        // optional binding 처리
+        if let myItems = content {
+            for item in myItems {
+                let lat = (item as AnyObject).value(forKey: "lat")
+                let lon = (item as AnyObject).value(forKey: "lon")
+                let title = (item as AnyObject).value(forKey: "title")
+                let subtitle = (item as AnyObject).value(forKey: "subtitle")
+                
+                // 형 변환
+                let mylat = (lat as! NSString).doubleValue
+                let mylon = (lon as! NSString).doubleValue
+                
+                let pin = MKPointAnnotation()
+                pin.coordinate.latitude = mylat
+                pin.coordinate.longitude = mylon
+                pin.title = title as? String
+                pin.subtitle = subtitle as? String
+                annotations.append(pin)
+
+            }
+        } else {
+            print("nile 발생")
+        }
+        mapView.showAnnotations(annotations, animated: true)
+        //mapView.selectAnnotation(point2, animated: true)
         
     }
      
@@ -61,15 +74,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
 
     
-    func createPoint(la : CLLocationDegrees, lo : CLLocationDegrees, title:String, subtitle:String) -> MKPointAnnotation {
-        let center = CLLocationCoordinate2D(latitude: la, longitude: lo)
-        let point = MKPointAnnotation()
-        point.coordinate = center
-        point.title = title
-        point.subtitle = subtitle
-        points.append(point)
-        return point
-    }
  
 
     @IBAction func standard(_ sender: Any) {
@@ -98,7 +102,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             annotationView?.pinTintColor = UIColor.blue
             annotationView?.animatesDrop = true
             switch annotation.title {
-                case "학교":
+                case "동의과학대 ":
                     annotationView?.pinTintColor = UIColor.red
                 case "송상현광장":
                     annotationView?.pinTintColor = UIColor.yellow
